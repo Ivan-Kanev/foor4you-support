@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Food4You</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root {
+  --bg1:#050706;
+  --bg2:#101711;
+  --card:rgba(255,255,255,.08);
+  --card2:rgba(255,255,255,.12);
+  --text:#f8fafc;
+  --muted:#a7b5aa;
+  --green:#7ED957;
+  --yellow:#FFD166;
+  --radius:28px;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 500px at 12% -10%, rgba(126,217,87,.32), transparent),
+    radial-gradient(800px 500px at 90% 8%, rgba(255,209,102,.22), transparent),
+    radial-gradient(700px 480px at 55% 90%, rgba(70,255,170,.12), transparent),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
+}
+
+header {
+  max-width:1200px;
+  margin:auto;
+  padding:28px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  z-index:10;
+}
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  letter-spacing:-.03em;
+}
+
+.logo-mark {
+  width:38px;
+  height:38px;
+  border-radius:13px;
+  background:linear-gradient(135deg,var(--green),var(--yellow));
+  display:grid;
+  place-items:center;
+  color:#061006;
+  box-shadow:0 12px 30px rgba(126,217,87,.25);
+}
+
+nav a {
+  margin-left:24px;
+  text-decoration:none;
+  color:var(--muted);
+  font-weight:600;
+}
+nav a:hover { color:var(--text); }
+
+.hero {
+  max-width:1200px;
+  margin:auto;
+  padding:90px 24px 70px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:64px;
+  align-items:center;
+}
+
+.badge {
+  display:inline-flex;
+  padding:10px 16px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  color:#d8fbd0;
+  font-weight:700;
+  margin-bottom:22px;
+  backdrop-filter:blur(20px);
+}
+
+.hero h1 {
+  font-size:72px;
+  line-height:1.02;
+  letter-spacing:-.06em;
+  margin:0 0 24px;
+}
+
+.hero h1 span {
+  background:linear-gradient(135deg,var(--green),var(--yellow));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p {
+  font-size:20px;
+  color:var(--muted);
+  max-width:560px;
+  line-height:1.65;
+}
+
+/* EXACT SAME APP STORE BUTTON STYLE */
+.store-btn {
+  margin-top:36px;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:16px 28px;
+  border-radius:18px;
+  background:black;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  transition:.3s ease;
+}
+.store-btn:hover {
+  transform:translateY(-3px) scale(1.02);
+}
+
+.hero-image {
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 50px 120px rgba(0,0,0,.45);
+  animation:float 6s ease-in-out infinite;
+  backdrop-filter:blur(24px);
+}
+
+.hero-image img {
+  width:100%;
+  border-radius:22px;
+  display:block;
+}
+
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-12px); }
+}
+
+.section {
+  max-width:1200px;
+  margin:auto;
+  padding:100px 24px;
+}
+
+.section h2 {
+  font-size:44px;
+  letter-spacing:-.04em;
+  margin-bottom:18px;
+}
+
+.section-intro {
+  color:var(--muted);
+  font-size:19px;
+  max-width:720px;
+  line-height:1.65;
+  margin-bottom:46px;
+}
+
+.features {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:28px;
+}
+
+.feature {
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:26px;
+  padding:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.28);
+  transition:.4s ease;
+  backdrop-filter:blur(24px);
+}
+
+.feature:hover {
+  transform:translateY(-10px);
+  background:var(--card2);
+}
+
+.feature img {
+  width:100%;
+  border-radius:20px;
+  margin-bottom:20px;
+  display:block;
+}
+
+.feature h3 {
+  font-size:22px;
+  margin:0 0 10px;
+}
+
+.feature p {
+  color:var(--muted);
+  line-height:1.6;
+  margin:0;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
+}
+
+.stat {
+  padding:28px;
+  border-radius:24px;
+  background:linear-gradient(180deg,rgba(126,217,87,.16),rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.stat strong {
+  display:block;
+  font-size:34px;
+  margin-bottom:8px;
+}
+
+.stat span {
+  color:var(--muted);
+}
+
+.reveal {
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.reveal.active {
+  opacity:1;
+  transform:translateY(0);
+}
+
+footer {
+  padding:60px 24px;
+  text-align:center;
+  color:var(--muted);
+}
+
+@media(max-width:850px) {
+  .hero {
+    grid-template-columns:1fr;
+    padding-top:55px;
+  }
+
+  .hero h1 {
+    font-size:52px;
+  }
+
+  nav a {
+    margin-left:14px;
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-mark">🍴</div>
+    <strong>Food4You</strong>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="reveal">
+    <div class="badge">Private recipe studio for iPhone & iPad</div>
+
+    <h1>Save meals.<br><span>Track taste.</span></h1>
+
+    <p>
+      Food4You helps you create a beautiful private recipe collection with photos,
+      favorites, meal filters, cooking insights, and approximate nutrition estimates.
+    </p>
+
+    <a class="store-btn" href="#" target="_blank">
+       Download on the App Store
+    </a>
+  </div>
+
+  <div class="hero-image reveal">
+    <img src="assets/main.PNG" alt="Food4You home screen">
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="reveal">Your personal taste map.</h2>
+  <p class="section-intro reveal">
+    Build a private food library, revisit favorite recipes, and understand what you cook most often.
+  </p>
+
+  <div class="features">
+    <div class="feature reveal">
+      <img src="assets/add.PNG" alt="Add recipe">
+      <h3>Create recipes</h3>
+      <p>Add ingredients, steps, prep time, servings, and a beautiful main recipe photo.</p>
+    </div>
+
+    <div class="feature reveal">
+      <img src="assets/rec.PNG" alt="Recipe detail">
+      <h3>Cook from clear views</h3>
+      <p>Open readable recipe pages with photos, ingredients, steps, calories, and protein.</p>
+    </div>
+
+    <div class="feature reveal">
+      <img src="assets/fav.PNG" alt="Favorites">
+      <h3>Keep favorites close</h3>
+      <p>Heart your go-to meals and return to the recipes you cook again and again.</p>
+    </div>
+
+    <div class="feature reveal">
+      <img src="assets/stat.PNG" alt="Statistics">
+      <h3>Understand habits</h3>
+      <p>See your most viewed, easiest, highest-protein, and highest-calorie recipes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="reveal">Made for everyday cooking.</h2>
+  <p class="section-intro reveal">
+    Food4You is local-first, private, Apple-native, and designed to feel smooth on iPhone and iPad.
+  </p>
+
+  <div class="stats">
+    <div class="stat reveal">
+      <strong>Private</strong>
+      <span>No account required. Recipes stay on your device.</span>
+    </div>
+
+    <div class="stat reveal">
+      <strong>Visual</strong>
+      <span>Add photos from Camera or Photos and adjust them beautifully.</span>
+    </div>
+
+    <div class="stat reveal">
+      <strong>Smart</strong>
+      <span>Approximate calories and protein are estimated from ingredients.</span>
+    </div>
+
+    <div class="stat reveal">
+      <strong>Native</strong>
+      <span>Built with SwiftUI for a clean Apple-style experience.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Food4You
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('active');
+    }
+  });
+},{ threshold:0.15 });
+
+reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
