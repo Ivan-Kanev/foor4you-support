@@ -161,7 +161,7 @@ nav a:hover { color:var(--text); }
 .section h2 {
   font-size:44px;
   letter-spacing:-.04em;
-  margin-bottom:18px;
+  margin:0 0 18px;
 }
 
 .section-intro {
@@ -172,13 +172,13 @@ nav a:hover { color:var(--text); }
   margin-bottom:46px;
 }
 
-.features {
+.feature-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:28px;
 }
 
-.feature {
+.feature-card {
   background:var(--card);
   border:1px solid rgba(255,255,255,.12);
   border-radius:26px;
@@ -188,27 +188,72 @@ nav a:hover { color:var(--text); }
   backdrop-filter:blur(24px);
 }
 
-.feature:hover {
+.feature-card:hover {
   transform:translateY(-10px);
   background:var(--card2);
 }
 
-.feature img {
+.feature-card.large {
+  grid-column:span 2;
+}
+
+.feature-card.tall {
+  grid-row:span 2;
+}
+
+.feature-card img {
   width:100%;
   border-radius:20px;
   margin-bottom:20px;
   display:block;
 }
 
-.feature h3 {
+.feature-card h3 {
   font-size:22px;
   margin:0 0 10px;
 }
 
-.feature p {
+.feature-card p {
   color:var(--muted);
   line-height:1.6;
   margin:0;
+}
+
+.story {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  align-items:center;
+}
+
+.story-card {
+  background:linear-gradient(180deg,rgba(126,217,87,.14),rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:30px;
+  padding:28px;
+  box-shadow:0 40px 100px rgba(0,0,0,.32);
+}
+
+.story-card img {
+  width:100%;
+  border-radius:22px;
+  display:block;
+}
+
+.story-text {
+  padding:20px;
+}
+
+.story-text h3 {
+  font-size:34px;
+  letter-spacing:-.04em;
+  margin:0 0 14px;
+}
+
+.story-text p {
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
 }
 
 .stats {
@@ -251,10 +296,20 @@ footer {
   color:var(--muted);
 }
 
-@media(max-width:850px) {
-  .hero {
+@media(max-width:950px) {
+  .hero,
+  .story {
     grid-template-columns:1fr;
-    padding-top:55px;
+  }
+
+  .feature-grid {
+    grid-template-columns:1fr;
+  }
+
+  .feature-card.large,
+  .feature-card.tall {
+    grid-column:auto;
+    grid-row:auto;
   }
 
   .hero h1 {
@@ -306,34 +361,117 @@ footer {
 </section>
 
 <section class="section">
-  <h2 class="reveal">Your personal taste map.</h2>
+  <h2 class="reveal">Everything you cook, beautifully organized.</h2>
   <p class="section-intro reveal">
-    Build a private food library, revisit favorite recipes, and understand what you cook most often.
+    From your main taste map to recipe creation, favorites, details, and statistics —
+    Food4You turns your personal meals into a polished private food library.
   </p>
 
-  <div class="features">
-    <div class="feature reveal">
-      <img src="assets/add.PNG" alt="Add recipe">
+  <div class="feature-grid">
+    <div class="feature-card large reveal">
+      <img src="assets/all.PNG" alt="All recipes overview">
+      <h3>Browse your full recipe collection</h3>
+      <p>
+        View all saved meals in one place with beautiful cards, photos, meal filters,
+        nutrition-style categories, prep time, calories, and open counts.
+      </p>
+    </div>
+
+    <div class="feature-card reveal">
+      <img src="assets/add.PNG" alt="Add recipe screen">
       <h3>Create recipes</h3>
-      <p>Add ingredients, steps, prep time, servings, and a beautiful main recipe photo.</p>
+      <p>
+        Add recipe name, description, meal type, prep time, servings, ingredients,
+        steps, and a main photo.
+      </p>
     </div>
 
-    <div class="feature reveal">
-      <img src="assets/rec.PNG" alt="Recipe detail">
-      <h3>Cook from clear views</h3>
-      <p>Open readable recipe pages with photos, ingredients, steps, calories, and protein.</p>
+    <div class="feature-card reveal">
+      <img src="assets/add2.PNG" alt="Recipe photo composer">
+      <h3>Make photos look great</h3>
+      <p>
+        Choose or capture a photo, then reposition and zoom it so every recipe
+        looks clean inside the app.
+      </p>
     </div>
 
-    <div class="feature reveal">
-      <img src="assets/fav.PNG" alt="Favorites">
-      <h3>Keep favorites close</h3>
-      <p>Heart your go-to meals and return to the recipes you cook again and again.</p>
+    <div class="feature-card reveal">
+      <img src="assets/rec.PNG" alt="Recipe detail screen">
+      <h3>Cook from a clear recipe view</h3>
+      <p>
+        Open a polished recipe page with hero photo, ingredients, steps, servings,
+        prep time, calories, and protein.
+      </p>
     </div>
 
-    <div class="feature reveal">
-      <img src="assets/stat.PNG" alt="Statistics">
-      <h3>Understand habits</h3>
-      <p>See your most viewed, easiest, highest-protein, and highest-calorie recipes.</p>
+    <div class="feature-card reveal">
+      <img src="assets/rec2.PNG" alt="Recipe edit or secondary recipe view">
+      <h3>Edit and refine anytime</h3>
+      <p>
+        Update recipes later while preserving favorites, open counts, creation dates,
+        and existing photos.
+      </p>
+    </div>
+
+    <div class="feature-card reveal">
+      <img src="assets/fav.PNG" alt="Favorites screen">
+      <h3>Keep your go-to meals close</h3>
+      <p>
+        Favorite the meals you love and quickly return to the recipes you cook most often.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="story">
+    <div class="story-card reveal">
+      <img src="assets/stat.PNG" alt="Food4You statistics overview">
+    </div>
+
+    <div class="story-text reveal">
+      <h3>Understand your cooking habits.</h3>
+      <p>
+        Food4You does more than store recipes. It helps you discover your most viewed meals,
+        easiest recipes, meal split, calorie range, and protein-heavy favorites.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="reveal">Actionable food insights.</h2>
+  <p class="section-intro reveal">
+    Statistics are designed to be useful, not just decorative. Tap into rankings,
+    categories, and meal patterns to rediscover what you cook and love.
+  </p>
+
+  <div class="feature-grid">
+    <div class="feature-card reveal">
+      <img src="assets/stat2.PNG" alt="Food4You calorie and protein statistics">
+      <h3>Nutrition-style overview</h3>
+      <p>
+        See approximate calories, protein, top categories, and useful recipe rankings
+        based on your saved meals.
+      </p>
+    </div>
+
+    <div class="feature-card reveal">
+      <img src="assets/stat3.PNG" alt="Food4You detailed statistics">
+      <h3>Recipe rankings</h3>
+      <p>
+        Find your easiest recipe, protein king, highest-calorie meal, and the meals
+        you return to most often.
+      </p>
+    </div>
+
+    <div class="feature-card reveal">
+      <img src="assets/main.PNG" alt="Food4You home and taste map">
+      <h3>Your taste map</h3>
+      <p>
+        The Home screen highlights your latest recipes, meal orbit filters, and smart
+        category chips in one smooth Apple-style interface.
+      </p>
     </div>
   </div>
 </section>
